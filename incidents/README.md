@@ -6,16 +6,16 @@
 
 | 目录 | 领域 | 代表案例 |
 |---|---|---|
-| [cloud-infrastructure/](cloud-infrastructure/) | 云基础设施 | AWS S3 2008（首次）、Google App Engine 2010、Azure 闰年 2012、Azure 存储 2014、AWS DynamoDB 2015、腾讯云 4·8 2024、Google UniSuper 2024、阿里云新加坡 2024、AWS 热失控 2026 |
-| [cdn-edge/](cdn-edge/) | CDN 与边缘 | Cloudflare WAF 2019、Azure Front Door 10·29 2025、Cloudflare Bot 11·18 2025 |
-| [networking-dns/](networking-dns/) | 网络 / DNS / BGP | ARPANET 1980、Cloudflare 1.1.1.1 2025、Facebook BGP 2021 |
+| [cloud-infrastructure/](cloud-infrastructure/) | 云基础设施 | AWS S3 2008（首次）、Google App Engine 2010、Azure 闰年 2012、Azure 存储 2014、AWS DynamoDB 2015、腾讯云 4·8 2024、Google UniSuper 2024、阿里云新加坡 2024、AWS 热失控 2026、Azure West US 7·23 2026、AWS us-west-2 7·24 2026 |
+| [cdn-edge/](cdn-edge/) | CDN 与边缘 | Cloudflare WAF 2019、Azure Front Door 10·29 2025、Cloudflare Bot 11·18 2025、AWS CloudFront VPC Origins 7·16 2026 |
+| [networking-dns/](networking-dns/) | 网络 / DNS / BGP | ARPANET 1980、Cloudflare 1.1.1.1 2025、Facebook BGP 2021、Cloudflare BYOIP 2·20 2026 |
 | [database-storage/](database-storage/) | 数据库与存储 | GitLab 数据丢失 2017、GitHub MySQL 2018 |
 | [container-orchestration/](container-orchestration/) | 容器编排与服务发现 | Roblox Consul 2021 |
 | [messaging-streaming/](messaging-streaming/) | 消息与流处理 | AWS Kinesis 2020 |
 | [identity-access/](identity-access/) | 身份认证与访问控制 | Google 认证 2020、阿里云 AK 2023 |
 | [saas-platforms/](saas-platforms/) | SaaS 平台 | Gmail 24h 2008、Slack 2021、Zoom 4·16 2025、语雀 2023 |
 | [observability/](observability/) | 可观测性平台 | Datadog 2023 |
-| [ai-ml-services/](ai-ml-services/) | AI / ML 服务 | OpenAI 2023/2024、DeepSeek 2025、Anthropic 2025 |
+| [ai-ml-services/](ai-ml-services/) | AI / ML 服务 | OpenAI 2023/2024、DeepSeek 2025、Anthropic 2025、Google Gemini 6·10 2026 |
 | [security-services/](security-services/) | 安全产品可用性 | CrowdStrike Falcon 2024 |
 
 ## 使用方式

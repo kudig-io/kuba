@@ -97,13 +97,15 @@ Why5 → "Cloudflare 运行在 Cloudflare 上"意味着内部 Service Token
 - **快速检测（Detect）**：Service Token 有效性监控；WARP 设备状态上传速率的异常告警
 - **快速恢复（Recover）**：Service Token 的"回滚到上一版本"机制；认证基础设施的快速故障转移
 
-## SRE / CRE / FDE 视角速览
+## SRE / CRE / FDE / SA 视角速览
 
 | 视角 | 本案例核心结论 |
 |---|---|
 | SRE | "运行在自家平台上"意味着内部基础设施组件的可靠性要求应等同于面向客户的服务——"dogfooding"的好处不应以牺牲可靠性为代价 |
 | CRE | 客户无法区分"Cloudflare 的产品 A 出了问题"和"Cloudflare 的认证基础设施出了问题"——对他们来说，WARP 不可用就是 Cloudflare 不可用 |
 | FDE | Service Token 元数据覆盖的取证需要"代码变更 diff + token 存储状态前后对比"——token 的全球同步日志是判断故障波及范围的关键证据 |
+| SA（客情危机） | Zero Trust/WARP 等安全产品中断 121 分钟，'安全服务自身不可靠'的讽刺冲击客户信任；Cloudflare 复盘透明，但安全产品的可用性承诺被客户以更高标准审视 |
+| SA（技术危机） | 安全供应商的可靠性=客户的信任基础——使用 Zero Trust 的客户应设计本地兜底与降级路径；'运行在自家平台上'的双刃剑效应提醒客户评估供应商内部依赖 |
 
 ## 参考资料
 

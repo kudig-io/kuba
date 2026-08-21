@@ -1,21 +1,26 @@
 # INDEX · 故障案例总索引
 
 > ⚠️ 本文件由 `tools/build-index.py` 自动生成，**禁止手工编辑**。
-> 生成日期: 2026-08-01 · 案例总数: **74**
+> 生成日期: 2026-08-21 · 案例总数: **79**
 
 ## 统计概览
 
 | 维度 | 分布 |
 |---|---|
-| 严重等级 | SEV-1 × 67 · SEV-2 × 6 · SEV-3 × 1 |
-| 公司类型 | cloud-native × 48 · ai-native × 4 · internet × 22 |
-| 高频标签 | `cascading-failure` × 20 · `us-east-1` × 7 · `bgp` × 6 · `canary-missing` × 6 · `blast-radius` × 6 · `ec2` × 4 · `ebs` × 4 · `cdn` × 4 |
+| 严重等级 | SEV-1 × 72 · SEV-2 × 6 · SEV-3 × 1 |
+| 公司类型 | cloud-native × 53 · ai-native × 4 · internet × 22 |
+| 高频标签 | `cascading-failure` × 24 · `us-east-1` × 7 · `bgp` × 7 · `canary-missing` × 6 · `blast-radius` × 6 · `aws` × 5 · `control-plane` × 5 · `ec2` × 4 |
 
 ## 全部案例（按日期倒序）
 
 | 日期 | 公司 | 等级 | 时长 | 根因分类 | 标题 |
 |---|---|---|---|---|---|
+| 2026-07-24 | [AWS](incidents/cloud-infrastructure/2026-07-24-aws-uswest2-network-outage.md) | SEV-1 | 1h17m | `network-routing` | AWS us-west-2 区域网络中断（区域至 Seattle Metro 网络硬件故障，主影响 20 分钟但下游恢复尾达 10 小时） |
+| 2026-07-23 | [Microsoft Azure](incidents/cloud-infrastructure/2026-07-23-azure-westus-route-removal.md) | SEV-1 | 4h57m | `software-bug` | Azure West US 区域进出流量中断（维护请求转换软件 bug 移除过多 IP 路由，约 5 小时 19 个下游服务级联） |
+| 2026-07-16 | [AWS](incidents/cdn-edge/2026-07-16-aws-cloudfront-vpc-origins-outage.md) | SEV-1 | 3h33m | `software-bug` | AWS CloudFront 全球中断（VPC Origins 连接管理 fleet 内部约束致配置分发失败，全球 5xx 约 3.5 小时） |
+| 2026-06-10 | [Google](incidents/ai-ml-services/2026-06-10-google-gemini-outage.md) | SEV-1 | 7h05m | `software-bug` | Google Gemini 全球服务中断（工具部署元数据数据库索引热点致极端读争用，约 7 小时错误率升高） |
 | 2026-05-07 | [AWS](incidents/cloud-infrastructure/2026-05-07-aws-thermal-outage.md) | SEV-1 | 未披露 | `hardware-facility` | AWS us-east-1 热失控故障（单可用区冷却失效致服务器过热断电，EC2/EBS 等 150+ 服务受损） |
+| 2026-02-20 | [Cloudflare](incidents/networking-dns/2026-02-20-cloudflare-byoip-outage.md) | SEV-1 | 6h07m | `software-bug` | Cloudflare BYOIP 全球前缀撤回故障（清理子任务 API 参数 bug 致 25% BYOIP 前缀被 BGP 撤回约 6 小时） |
 | 2025-12-05 | [Cloudflare](incidents/cdn-edge/2025-12-05-cloudflare-react2shell-outage.md) | SEV-1 | 25m | `change-management` | Cloudflare 安全补丁引发中断（React2Shell CVE 缓解措施致 28% 全球流量 500 错误约 25 分钟，FL1 代理规则引擎 nil 崩溃） |
 | 2025-11-18 | [Cloudflare](incidents/cdn-edge/2025-11-18-cloudflare-bot-outage.md) | SEV-1 | 5h46m | `software-bug` | Cloudflare 全球 5xx 中断（Bot Management 配置生成 bug 触发性文件超限引发 Rust panic，约 28% 核心流量受损 5.8 小时） |
 | 2025-10-29 | [Microsoft Azure](incidents/cdn-edge/2025-10-29-azure-frontdoor-outage.md) | SEV-1 | 8h20m | `config-error` | Azure Front Door 全球中断（租户配置变更绕过安全验证部署至全局控制面，AFD 节点失效约 8 小时） |
@@ -92,10 +97,12 @@
 
 ## 按技术领域
 
-### 云基础设施 `cloud-infrastructure`（26）
+### 云基础设施 `cloud-infrastructure`（28）
 
 | 日期 | 公司 | 等级 | 时长 | 根因分类 | 标题 |
 |---|---|---|---|---|---|
+| 2026-07-24 | [AWS](incidents/cloud-infrastructure/2026-07-24-aws-uswest2-network-outage.md) | SEV-1 | 1h17m | `network-routing` | AWS us-west-2 区域网络中断（区域至 Seattle Metro 网络硬件故障，主影响 20 分钟但下游恢复尾达 10 小时） |
+| 2026-07-23 | [Microsoft Azure](incidents/cloud-infrastructure/2026-07-23-azure-westus-route-removal.md) | SEV-1 | 4h57m | `software-bug` | Azure West US 区域进出流量中断（维护请求转换软件 bug 移除过多 IP 路由，约 5 小时 19 个下游服务级联） |
 | 2026-05-07 | [AWS](incidents/cloud-infrastructure/2026-05-07-aws-thermal-outage.md) | SEV-1 | 未披露 | `hardware-facility` | AWS us-east-1 热失控故障（单可用区冷却失效致服务器过热断电，EC2/EBS 等 150+ 服务受损） |
 | 2025-10-20 | [AWS](incidents/cloud-infrastructure/2025-10-20-aws-dynamodb-dns-cascade.md) | SEV-1 | 14h30m | `software-bug` | AWS us-east-1 大规模级联故障（DynamoDB DNS Enactor 竞态删除端点记录） |
 | 2025-06-12 | [Google Cloud](incidents/cloud-infrastructure/2025-06-12-gcp-service-control-outage.md) | SEV-1 | 10h | `software-bug` | Google Cloud 全球中断（Service Control 空指针崩溃循环） |
@@ -123,10 +130,11 @@
 | 2008-02-15 | [AWS](incidents/cloud-infrastructure/2008-02-15-aws-s3-first-outage.md) | SEV-1 | 2h | `capacity-overload` | AWS S3 首次重大中断（认证请求洪峰致单数据中心不可用约 2 小时，云计算"第一次大考"） |
 | 2007-09-29 | [AWS](incidents/cloud-infrastructure/2007-09-29-aws-ec2-first-outage.md) | SEV-1 | 未披露 | `data-integrity` | AWS EC2 首次重大故障（beta 期实例数据丢失，云计算史上第一次信任危机） |
 
-### CDN 与边缘接入 `cdn-edge`（9）
+### CDN 与边缘接入 `cdn-edge`（10）
 
 | 日期 | 公司 | 等级 | 时长 | 根因分类 | 标题 |
 |---|---|---|---|---|---|
+| 2026-07-16 | [AWS](incidents/cdn-edge/2026-07-16-aws-cloudfront-vpc-origins-outage.md) | SEV-1 | 3h33m | `software-bug` | AWS CloudFront 全球中断（VPC Origins 连接管理 fleet 内部约束致配置分发失败，全球 5xx 约 3.5 小时） |
 | 2025-12-05 | [Cloudflare](incidents/cdn-edge/2025-12-05-cloudflare-react2shell-outage.md) | SEV-1 | 25m | `change-management` | Cloudflare 安全补丁引发中断（React2Shell CVE 缓解措施致 28% 全球流量 500 错误约 25 分钟，FL1 代理规则引擎 nil 崩溃） |
 | 2025-11-18 | [Cloudflare](incidents/cdn-edge/2025-11-18-cloudflare-bot-outage.md) | SEV-1 | 5h46m | `software-bug` | Cloudflare 全球 5xx 中断（Bot Management 配置生成 bug 触发性文件超限引发 Rust panic，约 28% 核心流量受损 5.8 小时） |
 | 2025-10-29 | [Microsoft Azure](incidents/cdn-edge/2025-10-29-azure-frontdoor-outage.md) | SEV-1 | 8h20m | `config-error` | Azure Front Door 全球中断（租户配置变更绕过安全验证部署至全局控制面，AFD 节点失效约 8 小时） |
@@ -137,10 +145,11 @@
 | 2021-06-08 | [Fastly](incidents/cdn-edge/2021-06-08-fastly-global.md) | SEV-1 | 49m | `software-bug` | Fastly 全球服务中断（客户配置触发潜伏软件缺陷） |
 | 2019-07-02 | [Cloudflare](incidents/cdn-edge/2019-07-02-cloudflare-waf-regex.md) | SEV-1 | 27m | `change-management` | Cloudflare 全球边缘 CPU 耗尽（WAF 正则灾难性回溯） |
 
-### 网络 / DNS / BGP `networking-dns`（13）
+### 网络 / DNS / BGP `networking-dns`（14）
 
 | 日期 | 公司 | 等级 | 时长 | 根因分类 | 标题 |
 |---|---|---|---|---|---|
+| 2026-02-20 | [Cloudflare](incidents/networking-dns/2026-02-20-cloudflare-byoip-outage.md) | SEV-1 | 6h07m | `software-bug` | Cloudflare BYOIP 全球前缀撤回故障（清理子任务 API 参数 bug 致 25% BYOIP 前缀被 BGP 撤回约 6 小时） |
 | 2025-07-14 | [Cloudflare](incidents/networking-dns/2025-07-14-cloudflare-1111-outage.md) | SEV-1 | 1h02m | `config-error` | Cloudflare 1.1.1.1 DNS 解析器全球中断（遗留配置误包含 1.1.1.1 前缀至预发布服务拓扑，BGP 撤消约 62 分钟） |
 | 2023-01-25 | [Microsoft](incidents/networking-dns/2023-01-25-microsoft-wan-outage.md) | SEV-1 | 5h38m | `change-management` | Microsoft 365 全球中断（WAN 路由器 IP 变更引发全网路由重算） |
 | 2022-07-08 | [Rogers Communications](incidents/networking-dns/2022-07-08-rogers-national-outage.md) | SEV-1 | 19h | `change-management` | Rogers 加拿大全国网络瘫痪（变更删除路由过滤器导致核心网内存耗尽） |
@@ -169,10 +178,11 @@
 |---|---|---|---|---|---|
 | 2021-10-28 | [Roblox](incidents/container-orchestration/2021-10-28-roblox-consul.md) | SEV-1 | 73h | `software-bug` | Roblox 73 小时全站中断（Consul 流式特性与 BoltDB 性能病理叠加） |
 
-### AI / ML 服务 `ai-ml-services`（4）
+### AI / ML 服务 `ai-ml-services`（5）
 
 | 日期 | 公司 | 等级 | 时长 | 根因分类 | 标题 |
 |---|---|---|---|---|---|
+| 2026-06-10 | [Google](incidents/ai-ml-services/2026-06-10-google-gemini-outage.md) | SEV-1 | 7h05m | `software-bug` | Google Gemini 全球服务中断（工具部署元数据数据库索引热点致极端读争用，约 7 小时错误率升高） |
 | 2025-08-05 | [Anthropic](incidents/ai-ml-services/2025-08-05-anthropic-quality-degradation.md) | SEV-3 | 未披露 | `software-bug` | Claude 模型质量劣化事件（三个独立基础设施 bug 叠加，约五周输出质量下降） |
 | 2025-01-27 | [DeepSeek](incidents/ai-ml-services/2025-01-27-deepseek-malicious-attack.md) | SEV-2 | 未披露 | `security-attack` | DeepSeek 大规模恶意攻击事件（爆红高峰期遭攻击，限制非 +86 注册，服务间歇中断） |
 | 2024-12-11 | [OpenAI](incidents/ai-ml-services/2024-12-11-openai-k8s.md) | SEV-1 | 4h15m | `change-management` | OpenAI 全平台中断（新遥测服务压垮 Kubernetes 控制面，DNS 缓存延迟暴露） |
@@ -254,10 +264,14 @@
 | 2022-06-21 | [Cloudflare](incidents/cdn-edge/2022-06-21-cloudflare-outage.md) | SEV-1 | 1h15m | `config-error` | Cloudflare 全球中断（BGP 前缀通告策略变更中 term 重排序致 19 个数据中心离线约 75 分钟，50% 全球流量受损） |
 | 2020-07-17 | [Cloudflare](incidents/networking-dns/2020-07-17-cloudflare-backbone-outage.md) | SEV-1 | 27m | `config-error` | Cloudflare 骨干网中断（骨干网络配置错误导致 27 分钟全球中断，Discord/Shopify 等连带受影响） |
 
-### 软件缺陷 `software-bug`（20）
+### 软件缺陷 `software-bug`（24）
 
 | 日期 | 公司 | 等级 | 时长 | 根因分类 | 标题 |
 |---|---|---|---|---|---|
+| 2026-07-23 | [Microsoft Azure](incidents/cloud-infrastructure/2026-07-23-azure-westus-route-removal.md) | SEV-1 | 4h57m | `software-bug` | Azure West US 区域进出流量中断（维护请求转换软件 bug 移除过多 IP 路由，约 5 小时 19 个下游服务级联） |
+| 2026-07-16 | [AWS](incidents/cdn-edge/2026-07-16-aws-cloudfront-vpc-origins-outage.md) | SEV-1 | 3h33m | `software-bug` | AWS CloudFront 全球中断（VPC Origins 连接管理 fleet 内部约束致配置分发失败，全球 5xx 约 3.5 小时） |
+| 2026-06-10 | [Google](incidents/ai-ml-services/2026-06-10-google-gemini-outage.md) | SEV-1 | 7h05m | `software-bug` | Google Gemini 全球服务中断（工具部署元数据数据库索引热点致极端读争用，约 7 小时错误率升高） |
+| 2026-02-20 | [Cloudflare](incidents/networking-dns/2026-02-20-cloudflare-byoip-outage.md) | SEV-1 | 6h07m | `software-bug` | Cloudflare BYOIP 全球前缀撤回故障（清理子任务 API 参数 bug 致 25% BYOIP 前缀被 BGP 撤回约 6 小时） |
 | 2025-11-18 | [Cloudflare](incidents/cdn-edge/2025-11-18-cloudflare-bot-outage.md) | SEV-1 | 5h46m | `software-bug` | Cloudflare 全球 5xx 中断（Bot Management 配置生成 bug 触发性文件超限引发 Rust panic，约 28% 核心流量受损 5.8 小时） |
 | 2025-10-20 | [AWS](incidents/cloud-infrastructure/2025-10-20-aws-dynamodb-dns-cascade.md) | SEV-1 | 14h30m | `software-bug` | AWS us-east-1 大规模级联故障（DynamoDB DNS Enactor 竞态删除端点记录） |
 | 2025-08-05 | [Anthropic](incidents/ai-ml-services/2025-08-05-anthropic-quality-degradation.md) | SEV-3 | 未披露 | `software-bug` | Claude 模型质量劣化事件（三个独立基础设施 bug 叠加，约五周输出质量下降） |
@@ -301,10 +315,11 @@
 | 2012-12-24 | [AWS](incidents/cloud-infrastructure/2012-12-24-aws-elb-state-deletion.md) | SEV-1 | 23h | `operational-safeguard` | AWS ELB 平安夜故障（维护进程误删生产负载均衡器状态数据） |
 | 2010-02-24 | [Google](incidents/cloud-infrastructure/2010-02-24-google-appengine-outage.md) | SEV-1 | 2h | `operational-safeguard` | Google App Engine 全平台中断（数据中心维护操作失误致 App Engine 控制面不可用约 2 小时） |
 
-### 网络与路由 `network-routing`（7）
+### 网络与路由 `network-routing`（8）
 
 | 日期 | 公司 | 等级 | 时长 | 根因分类 | 标题 |
 |---|---|---|---|---|---|
+| 2026-07-24 | [AWS](incidents/cloud-infrastructure/2026-07-24-aws-uswest2-network-outage.md) | SEV-1 | 1h17m | `network-routing` | AWS us-west-2 区域网络中断（区域至 Seattle Metro 网络硬件故障，主影响 20 分钟但下游恢复尾达 10 小时） |
 | 2021-10-04 | [Meta (Facebook)](incidents/networking-dns/2021-10-04-facebook-bgp.md) | SEV-1 | 6h05m | `network-routing` | Facebook 全球中断（骨干网维护命令撤销全部 BGP 路由） |
 | 2020-08-30 | [CenturyLink (Lumen)](incidents/networking-dns/2020-08-30-centurylink-flowspec-outage.md) | SEV-1 | 5h06m | `network-routing` | CenturyLink/Level 3 全球骨干故障（错误 Flowspec 规则阻断 BGP） |
 | 2018-10-21 | [GitHub](incidents/database-storage/2018-10-21-github-mysql.md) | SEV-2 | 24h17m | `network-routing` | GitHub 43 秒网络分区引发 MySQL 跨洋脑裂，降级运行 24 小时 |
@@ -349,11 +364,16 @@
 
 ## 按年份
 
-### 2026（1）
+### 2026（6）
 
 | 日期 | 公司 | 等级 | 时长 | 根因分类 | 标题 |
 |---|---|---|---|---|---|
+| 2026-07-24 | [AWS](incidents/cloud-infrastructure/2026-07-24-aws-uswest2-network-outage.md) | SEV-1 | 1h17m | `network-routing` | AWS us-west-2 区域网络中断（区域至 Seattle Metro 网络硬件故障，主影响 20 分钟但下游恢复尾达 10 小时） |
+| 2026-07-23 | [Microsoft Azure](incidents/cloud-infrastructure/2026-07-23-azure-westus-route-removal.md) | SEV-1 | 4h57m | `software-bug` | Azure West US 区域进出流量中断（维护请求转换软件 bug 移除过多 IP 路由，约 5 小时 19 个下游服务级联） |
+| 2026-07-16 | [AWS](incidents/cdn-edge/2026-07-16-aws-cloudfront-vpc-origins-outage.md) | SEV-1 | 3h33m | `software-bug` | AWS CloudFront 全球中断（VPC Origins 连接管理 fleet 内部约束致配置分发失败，全球 5xx 约 3.5 小时） |
+| 2026-06-10 | [Google](incidents/ai-ml-services/2026-06-10-google-gemini-outage.md) | SEV-1 | 7h05m | `software-bug` | Google Gemini 全球服务中断（工具部署元数据数据库索引热点致极端读争用，约 7 小时错误率升高） |
 | 2026-05-07 | [AWS](incidents/cloud-infrastructure/2026-05-07-aws-thermal-outage.md) | SEV-1 | 未披露 | `hardware-facility` | AWS us-east-1 热失控故障（单可用区冷却失效致服务器过热断电，EC2/EBS 等 150+ 服务受损） |
+| 2026-02-20 | [Cloudflare](incidents/networking-dns/2026-02-20-cloudflare-byoip-outage.md) | SEV-1 | 6h07m | `software-bug` | Cloudflare BYOIP 全球前缀撤回故障（清理子任务 API 参数 bug 致 25% BYOIP 前缀被 BGP 撤回约 6 小时） |
 
 ### 2025（11）
 
